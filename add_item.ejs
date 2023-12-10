@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="indexStyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish&display=swap">
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>BLOG IT</h1>
+        <div class="navigation_bar">
+        <ul>
+            <a href="#"><li>Home</li></a>
+            <a href="/show-blogs"><li>Read Blogs</li></a>
+            <li></li>
+        </ul>
+    </div>
+    </header>
+    <p>Welcome to Blog It where you can display your creativity using our platform... </p><br><br>
+    <div class="blog_form">
+    <form action="/add-blog" method="POST">
+    <div class="blog-author-name">
+        <label for="name">Name:</label>
+         <br>
+        <input type="text" placeholder="Enter your name">
+    </div>
+        <br><br>
+        <div class="blog-author-email">
+            <label for="email">Email:</label><br>
+            <input type="text" placeholder="Enter your email">
+        </div>
+    
+        
+    <br><br>
+    <div class="blog-title-name">
+        Title: <br> 
+        <input type="text" placeholder="give the title for your blog">
+    </div>
+<br><br>
+    <div class="blog-text-area">
+        <label for="textArea">Your Blog:</label><br>
+        <textarea name="" id="" cols="30" rows="8" placeholder="start writing here"></textarea>
+    </div>
+    <br><br>
+    <div class="blog-images">
+        Images: <br>
+        <input type="text" placeholder="paste the image address" class="image_addr">
+        <button onclick="moreImages()">add more</button>
+        <br>
+        <div id="more"></div>
+        <button id="more-images"onclick="add()">Show Images</button>
+        <div id="container" ></div><br>
+    </div>
+<div class="button-container">
+<button id="create-blog">Create Blog</button>
+</div>
+    </form>
+</div>
+
+    <footer>
+    </footer>
+    
+<script>
+    
+    
+
+    function moreImages(){
+       
+            event.preventDefault();
+            // Create a new input field for image URL
+            const imageInputs = document.getElementById('more');
+            const newInputDiv = document.createElement('div');
+            newInputDiv.innerHTML = `<input type="text" placeholder="paste the image address" class="image_addr">
+            <button onclick="moreImages()">add more</button><br><br>
+           
+            `
+              ;
+            imageInputs.appendChild(newInputDiv);
+          
+
+    }
+     function add() {
+        event.preventDefault();
+        const images = document.querySelectorAll('.image_addr');
+        const imageArr = [];
+
+        images.forEach(input=>{
+            const imgURL = input.value.trim();
+            const img = document.createElement('img');
+            if(imgURL !== '')
+            {
+                img.src = imgURL;
+          img.style.maxWidth = '100%';
+          img.style.height = 'auto';
+          imageArr.push(img);
+            }
+            const container = document.getElementById('container');
+            container.innerHTML = '';
+
+            imageArr.forEach(input=>{
+                container.appendChild(input);
+            })
+            
+
+        })
+
+        
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
